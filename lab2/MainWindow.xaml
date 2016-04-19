@@ -1,0 +1,16 @@
+﻿<Window x:Class="lab2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="282.821" Width="525">
+    <Grid>
+        <Button x:Name="button" Content="Отобразить четкий временной ряд" HorizontalAlignment="Left" Margin="33,141,0,0" VerticalAlignment="Top" Width="450" Click="button_Click"/>
+        <Button x:Name="button_Copy" Content="Построить нечеткий временной ряд" HorizontalAlignment="Left" Margin="33,191,0,0" VerticalAlignment="Top" Width="450" Click="button_Copy_Click"/>
+        <Button x:Name="button_Copy1" Content="Построить график нечетких тенденций" HorizontalAlignment="Left" Margin="33,216,0,0" VerticalAlignment="Top" Width="450" Click="button_Copy1_Click"/>
+        <Label x:Name="label" Content="Реализовать программное обеспечение, позволяющее загружать четкий &#xD;&#xA;временной ряд величины из лабораторной работы №1. С помощью &#xD;&#xA;построенной в предыдущей лабораторной работе шкалы построить из него&#xD;&#xA; временной ряд нечетких значений и нечетких тенденций. Осуществить &#xD;&#xA;графическое отображение нечетких меток шкалы и нечетких тенденций, &#xD;&#xA;выделив каждую отдельным цветом. " HorizontalAlignment="Left" Margin="33,10,0,0" VerticalAlignment="Top" Height="108" Width="450"/>
+        <Button x:Name="button1" Content="Добавить шкалу" HorizontalAlignment="Left" Margin="33,166,0,0" VerticalAlignment="Top" Width="450" Click="button1_Click"/>
+    </Grid>
+</Window>
