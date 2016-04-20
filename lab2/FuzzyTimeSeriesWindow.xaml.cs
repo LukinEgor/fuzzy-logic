@@ -23,9 +23,9 @@ namespace lab2
     {
         private readonly TimeSeries _series;
 
-        private readonly Scales _scales;
+        private readonly Scalies _scales;
 
-        public FuzzyTimeSeriesWindow(TimeSeries series, Scales scales)
+        public FuzzyTimeSeriesWindow(TimeSeries series, Scalies scales)
         {
             _series = series;
             _scales = scales;
@@ -68,9 +68,9 @@ namespace lab2
             Close();
         }
 
-        public EventHandler<Scales> GetScalesEventHandler = delegate { };
+        public EventHandler<Scalies> GetScalesEventHandler = delegate { };
 
-        public void OnGetScales(Scales scales)
+        public void OnGetScales(Scalies scales)
         {
             GetScalesEventHandler?.Invoke(this, scales);
         }

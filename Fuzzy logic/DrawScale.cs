@@ -3,6 +3,7 @@ using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -70,16 +71,25 @@ namespace Fuzzy_logic
                 Margin = new Thickness(p0.X - 5, canvas.Height - p0.Y - 5, 0, 0)
             };
 
-            canvas.Children.Add(ellipse);
-
-            TextBlock text = new TextBlock()
+            TextBlock text = new TextBlock();
+            ellipse.MouseDown += (obj, e) =>
             {
-                Text = $"({DecreaseY(p0, canvas).X}, {DecreaseY(p0, canvas).Y:f2})",
-                Margin = new Thickness(p0.X + 10, canvas.Height - p0.Y, 0, 0)
+                text = new TextBlock()
+                {
+                    Text = $"({DecreaseY(p0, canvas).X:f2}, {DecreaseY(p0, canvas).Y:f2})",
+                    Margin = new Thickness(p0.X + 10, canvas.Height - p0.Y, 0, 0)
+                };
+
+                canvas.Children.Add(text);
             };
 
-            canvas.Children.Add(text);
+            ellipse.MouseUp += (obj, e) =>
+            {
+                if(canvas.Children.Contains(text))
+                    canvas.Children.Remove(text);
+            };
 
+            canvas.Children.Add(ellipse);
         }
 
         private static void DrawLine(Point point, Point point1, Canvas canvas, Color color)

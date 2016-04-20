@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Fuzzy_logic
 {
@@ -19,9 +9,9 @@ namespace Fuzzy_logic
     /// </summary>
     public partial class AddScaleWindow : Window
     {
-        private readonly Scales _scales;
+        private readonly Scalies _scales;
 
-        public AddScaleWindow(Scales scales)
+        public AddScaleWindow(Scalies scales)
         {
             this._scales = scales;
             InitializeComponent();
@@ -69,9 +59,9 @@ namespace Fuzzy_logic
             Close();
         }
 
-        public EventHandler<Scales> GetScalesEventHandler = delegate { };
+        public EventHandler<Scalies> GetScalesEventHandler = delegate { };
 
-        private void OnGetScales(Scales scales)
+        private void OnGetScales(Scalies scales)
         {
             GetScalesEventHandler?.Invoke(this, scales);
         }

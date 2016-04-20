@@ -9,38 +9,40 @@ namespace CMeans
 {
     public class CMeansCluster
     {
-        private int _clusterCount;
+        private readonly int[] _objects;
 
-        private int[] _objects;
-
-        private float[] _centersClusters;
+        private readonly float[] _clusters;
 
         private float[,] _matrix;
 
-        private float _epsilon;
+        private readonly float _epsilon;
 
-        private int _iteration;
+        private readonly int _iteration;
 
-        private float _coefficient;
+        private readonly float _coefficient;
 
         public CMeansCluster(int[] objects, int clusters, float coefficient = 1.6f, float epsilon = 0.1f, int iter = 10000)
         {
             _objects = objects;
-            _clusterCount = clusters;
             _epsilon = epsilon;
             _iteration = iter;
-            _centersClusters = new float[_clusterCount];
+            _clusters = new float[clusters];
             _coefficient = coefficient;
 
             Init();
         }
 
+        public float[] GetCenter()
+        {
+            return _clusters;
+        }
+
         private void Init()
         {
-            _matrix = new float[_clusterCount, _objects.Length];
+            _matrix = new float[_clusters.Length, _objects.Length];
 
             Random random = new Random();
-            for (int i = 0; i < _clusterCount; i++)
+            for (int i = 0; i < _clusters.Length; i++)
             {
                 for (int j = 0; j < _objects.Length; j++)
                 {
@@ -57,6 +59,10 @@ namespace CMeans
             while (e > _epsilon && i <_iteration)
             {
                 ComputeCenterCluster();
+
+                var centers = (float[])_clusters.Clone();
+                OnGettingCenter(centers);
+
                 ComputeMatrix();
 
                 e -= GetFunctionValue();
@@ -71,11 +77,11 @@ namespace CMeans
         {
             float sum = 0;
 
-            for (int i = 0; i < _clusterCount; i++)
+            for (int i = 0; i < _clusters.Length; i++)
             {
                 for (int j = 0; j < _objects.Length; j++)
                 {
-                    sum += (float)Math.Pow(_matrix[i, j], _coefficient)*Math.Abs(_objects[j] - _centersClusters[i]);
+                    sum += (float)Math.Pow(_matrix[i, j], _coefficient)*Math.Abs(_objects[j] - _clusters[i]);
                 }
             }
 
@@ -84,15 +90,15 @@ namespace CMeans
 
         private void ComputeMatrix()
         {
-            for (int i = 0; i < _clusterCount; i++)
+            for (int i = 0; i < _clusters.Length; i++)
             {
                 for (int j = 0; j < _objects.Length; j++)
                 {
                     float sum = 0;
-                    for (int l = 0; l < _clusterCount; l++)
+                    for (int l = 0; l < _clusters.Length; l++)
                     {
 
-                        sum += (float)Math.Pow(Math.Abs(_objects[j] - _centersClusters[i])/Math.Abs(_objects[j] - _centersClusters[l]), 2 / (_coefficient  - 1));
+                        sum += (float)Math.Pow(Math.Abs(_objects[j] - _clusters[i])/Math.Abs(_objects[j] - _clusters[l]), 2 / (_coefficient  - 1));
                     }
                     _matrix[i, j] = 1/sum;
                 }
@@ -101,7 +107,7 @@ namespace CMeans
 
         private void ComputeCenterCluster()
         {
-            for (int i = 0; i < _clusterCount; i++)
+            for (int i = 0; i < _clusters.Length; i++)
             {
                 float divident = 0;
                 float divider = 0;
@@ -111,8 +117,15 @@ namespace CMeans
                     divider += (float)Math.Pow(_matrix[i, j], _coefficient);
                 }
 
-                _centersClusters[i] = divident/divider;
+                _clusters[i] = divident/divider;
             }
         }
+
+        public EventHandler<float[]> GettingCenter = delegate { };
+
+        private void OnGettingCenter(float[] centers)
+        {
+            GettingCenter?.Invoke(this, centers);
+        } 
     }
 }

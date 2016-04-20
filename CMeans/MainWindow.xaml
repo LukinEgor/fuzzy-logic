@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CMeans"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="30,32,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-
+        Title="MainWindow" Height="414.601" Width="630.096">
+    <Grid Margin="0,0,0,-4">
+        <Button x:Name="button" Content="Построить кластер" HorizontalAlignment="Left" Margin="24,332,0,0" VerticalAlignment="Top" Width="118" Click="button_Click" Height="32"/>
+        <Canvas x:Name="Canvas" HorizontalAlignment="Left" Height="245" Margin="24,69,0,0" VerticalAlignment="Top" Width="569"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="31" Margin="24,18,0,0" TextWrapping="Wrap" Text="230 180 193 134 450 120" VerticalAlignment="Top" Width="430"/>
+        <Button x:Name="button1" Content="Следующая итерация" HorizontalAlignment="Left" Margin="236,332,0,0" VerticalAlignment="Top" Width="152" Height="32" Click="button1_Click"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="31" Margin="473,18,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button2" Content="Очистить" HorizontalAlignment="Left" Margin="464,332,0,0" VerticalAlignment="Top" Width="129" Height="32" Click="button2_Click"/>
     </Grid>
 </Window>

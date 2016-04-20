@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace Fuzzy_logic
 {
-    public class Scales
+    public class Scalies
     {
         public List<Scale> ScaleList { get; set; }
 
-        public Scales()
+        public Scalies()
         {
             ScaleList = new List<Scale>();
         }

@@ -13,10 +13,12 @@ namespace ExstensionMethods
         {
             var seq = source as IEnumerable;
             if (seq != null)
+            {
                 foreach (var item in seq)
                 {
                     action(seq);
                 }
+            }
         }
     }
 }

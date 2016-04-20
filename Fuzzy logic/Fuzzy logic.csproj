@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="DrawScale.cs" />
     <Compile Include="Scale.cs" />
-    <Compile Include="Scales.cs" />
+    <Compile Include="Scalies.cs" />
     <Page Include="AddScaleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

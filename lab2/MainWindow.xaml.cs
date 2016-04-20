@@ -21,13 +21,13 @@ namespace lab2
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Scales _scales;
+        private Scalies _scales;
 
         private TimeSeries _timeSeries;
 
         public MainWindow()
         {
-            _scales = new Scales();
+            _scales = new Scalies();
             _timeSeries = new TimeSeries();
             InitializeComponent();
         }
@@ -50,7 +50,7 @@ namespace lab2
             window.Show();
         }
 
-        private void GetScalesEventHandler(object sender, Scales scales)
+        private void GetScalesEventHandler(object sender, Scalies scales)
         {
             _scales = scales;
         }

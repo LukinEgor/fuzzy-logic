@@ -14,7 +14,7 @@ namespace Fuzzy_logic
 
         public Point C { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = "Untitle";
 
         private readonly List<double> _pointsX;
         //private Point _a = new Point(0, 0);

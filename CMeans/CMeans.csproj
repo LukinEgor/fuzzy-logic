@@ -96,6 +96,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExstensionMethods\ExstensionMethods.csproj">
+      <Project>{865151C0-211F-48D6-B780-B23392A5D746}</Project>
+      <Name>ExstensionMethods</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fuzzy logic\Fuzzy logic.csproj">
+      <Project>{F04C5983-AA9F-48A1-BFAA-3CD171EEA4DC}</Project>
+      <Name>Fuzzy logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\lab2\lab2.csproj">
+      <Project>{5e5999bf-b6e8-4c15-aa30-361195b50cf1}</Project>
+      <Name>lab2</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
