@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Text;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -21,21 +18,39 @@ namespace Fuzzy_logic
             DrawLine(IncreaseY(scale.A, canvas), IncreaseY(scale.B, canvas), canvas, Colors.Black);
             DrawLine(IncreaseY(scale.B, canvas), IncreaseY(scale.C, canvas), canvas, Colors.Black);
 
-            Random random = new Random();
+            //DrawLabel(scale, canvas);
+
+            var random = new Random();
             foreach (var point in scale.GetPoint())
             {
                 DrawPoint(IncreaseY(point, canvas), canvas, GetRandomColor(random.Next(0, 5)));
             }
         }
 
+        //private static void DrawLabel(Scale scale, Canvas canvas)
+        //{
+        //    var point = IncreaseY(scale.B, canvas);
+
+
+        //    var textBox = new TextBox
+        //    {
+        //        Text = scale.Name,
+        //        Margin = new Thickness(point.X - 10, point.Y - 50, 0, 0)
+        //    };
+
+        //    textBox.TextChanged += (sender, args) => { scale.Name = ((TextBox) sender).Text; };
+
+        //    canvas.Children.Add(textBox);
+        //}
+
         public static Point IncreaseY(Point point, Canvas canvas)
         {
-            return new Point(point.X + 10, point.Y * canvas.Height);
+            return new Point(point.X + 10, point.Y*canvas.Height);
         }
 
         public static Point DecreaseY(Point point, Canvas canvas)
         {
-            return new Point(point.X - 10, point.Y / canvas.Height);
+            return new Point(point.X - 10, point.Y/canvas.Height);
         }
 
         public static Color GetRandomColor(int i)
@@ -55,26 +70,23 @@ namespace Fuzzy_logic
                 default:
                     return Colors.Cyan;
             }
-
         }
 
         public static void DrawPoint(Point p0, Canvas canvas, Color color)
         {
-            Ellipse ellipse = new Ellipse
+            var ellipse = new Ellipse
             {
                 Fill = new SolidColorBrush(color),
                 Stroke = new SolidColorBrush(color),
-
                 Width = 10,
                 Height = 10,
-
                 Margin = new Thickness(p0.X - 5, canvas.Height - p0.Y - 5, 0, 0)
             };
 
-            TextBlock text = new TextBlock();
+            var text = new TextBlock();
             ellipse.MouseDown += (obj, e) =>
             {
-                text = new TextBlock()
+                text = new TextBlock
                 {
                     Text = $"({DecreaseY(p0, canvas).X:f2}, {DecreaseY(p0, canvas).Y:f2})",
                     Margin = new Thickness(p0.X + 10, canvas.Height - p0.Y, 0, 0)
@@ -85,7 +97,7 @@ namespace Fuzzy_logic
 
             ellipse.MouseUp += (obj, e) =>
             {
-                if(canvas.Children.Contains(text))
+                if (canvas.Children.Contains(text))
                     canvas.Children.Remove(text);
             };
 
@@ -94,14 +106,12 @@ namespace Fuzzy_logic
 
         private static void DrawLine(Point point, Point point1, Canvas canvas, Color color)
         {
-            Line line = new Line
+            var line = new Line
             {
                 X1 = point.X,
                 Y1 = canvas.Height - point.Y,
-
                 X2 = point1.X,
                 Y2 = canvas.Height - point1.Y,
-
                 StrokeThickness = 3,
                 Stroke = new SolidColorBrush(color)
             };
@@ -114,14 +124,14 @@ namespace Fuzzy_logic
             DrawLine(new Point(0, 0), new Point(0, canvas.Height), canvas, color);
             DrawLine(new Point(0, 0), new Point(canvas.Width, 0), canvas, color);
 
-            int divisionX = (int)canvas.Width/50;
-            int divisionY = (int)canvas.Height/10;
+            var divisionX = (int) canvas.Width/50;
+            var divisionY = (int) canvas.Height/10;
 
-            for(int i = 1; i <= divisionX; i++)
-                DrawLine(new Point(i * 50, 0), new Point(i * 50, 10), canvas, color);
+            for (var i = 1; i <= divisionX; i++)
+                DrawLine(new Point(i*50, 0), new Point(i*50, 10), canvas, color);
 
-            for (int i = 1; i <= 10; i++)
-                DrawLine(new Point(0, divisionY * i), new Point(10, divisionY * i), canvas, color);
+            for (var i = 1; i <= 10; i++)
+                DrawLine(new Point(0, divisionY*i), new Point(10, divisionY*i), canvas, color);
         }
 
         public static double GetAccesory(int count, Scale scale, Canvas canvas)
@@ -142,12 +152,7 @@ namespace Fuzzy_logic
                 throw new Exception("Точка выходит за пределы шкалы");
             }
 
-            return (max.Y - min.Y) * (count - min.X) / (max.X - min.X) + max.Y;
-        }
-
-        private static double GetY(Canvas canvas, double y)
-        {
-            return (canvas.Height - y + 10)/100;
+            return (max.Y - min.Y)*(count - min.X)/(max.X - min.X) + max.Y;
         }
     }
 }

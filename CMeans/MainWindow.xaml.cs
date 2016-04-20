@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using ExstensionMethods;
 using Fuzzy_logic;
 
@@ -20,11 +21,15 @@ namespace CMeans
 
         private int _currentIndex;
 
+        private TextBox[] _textBoxes;
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             _pointsX = textBox.Text.Split(' ').Select(int.Parse).ToArray();
 
-            var cluster = new CMeansCluster(_pointsX, int.Parse(textBox1.Text));
+            int countCluster = int.Parse(textBox1.Text);
+
+            var cluster = new CMeansCluster(_pointsX, countCluster);
 
             cluster.GettingCenter += (send, centers) =>
             {
@@ -33,7 +38,24 @@ namespace CMeans
 
             cluster.GetResult();
 
+            _textBoxes = CreateTextBox(countCluster);
+
             DrawNextIteration();
+        }
+
+        private TextBox[] CreateTextBox(int cluster)
+        {
+            TextBox[] textboxes = new TextBox[cluster];
+            for (int i = 0; i < cluster; i++)
+            {
+                textboxes[i] = new TextBox()
+                {
+                    Text = "Untitle",
+                    Margin = new Thickness(500, 30*i, 0, 0)
+                };
+            }
+
+            return textboxes;
         }
 
         private void DrawNextIteration()
@@ -95,6 +117,11 @@ namespace CMeans
             foreach (var scale in scales.ScaleList)
             {
                 Fuzzy_logic.DrawScale.Draw(scale, Canvas);
+            }
+
+            foreach (var box in _textBoxes)
+            {
+                Canvas.Children.Add(box);
             }
         }
 
