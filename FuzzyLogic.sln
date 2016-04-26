@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMeans", "CMeans\CMeans.csproj", "{4ED8F6D9-703C-4018-8B57-4418F52B1BDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Genetic Algorithm", "Genetic Algorithm\Genetic Algorithm.csproj", "{39B0B5A6-004B-4C3B-B47C-247F82AE3CFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4ED8F6D9-703C-4018-8B57-4418F52B1BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ED8F6D9-703C-4018-8B57-4418F52B1BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ED8F6D9-703C-4018-8B57-4418F52B1BDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B0B5A6-004B-4C3B-B47C-247F82AE3CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B0B5A6-004B-4C3B-B47C-247F82AE3CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B0B5A6-004B-4C3B-B47C-247F82AE3CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B0B5A6-004B-4C3B-B47C-247F82AE3CFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

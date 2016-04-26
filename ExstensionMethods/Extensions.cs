@@ -20,5 +20,10 @@ namespace ExstensionMethods
                 }
             }
         }
+
+        public static int ToInt(this string source)
+        {
+            return int.Parse(source);
+        }
     }
 }
