@@ -32,6 +32,29 @@ namespace lab2
             }
         }
 
+        public static void Draw(Point[] points, Canvas canvas, Color color, string[] labels)
+        {
+            DrawCell(points, canvas);
+
+            double kx, ky;
+            //if (canvas.ActualHeight == 0 && canvas.ActualWidth == 0)
+            //{
+            //    kx = canvas.Width / points.OrderBy(t => t.X).Last().X;
+            //    ky = canvas.Height / points.OrderBy(t => t.Y).Last().Y;
+            //}
+            //else
+            //{
+            kx = canvas.Width / points.OrderBy(t => t.X).Last().X;
+            ky = canvas.Height / points.OrderBy(t => t.Y).Last().Y;
+            //  }
+
+            int i = 0;
+            foreach (var point in points)
+            {
+                DrawPoint(point, kx, ky, canvas, color, true, labels?[i++]);
+            }
+        }
+
         private static void DrawCell(Point[] points, Canvas canvas)
         {
             DrawLine(new Point(0, 0), new Point(0, canvas.Height), canvas, Colors.Black);

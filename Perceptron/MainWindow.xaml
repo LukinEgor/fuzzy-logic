@@ -1,0 +1,16 @@
+﻿<Window x:Class="Perceptron.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Perceptron"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="384.711" Width="687.948">
+    <Grid>
+        <Button x:Name="button" Content="Построить предсказанный временной ряд" HorizontalAlignment="Left" Margin="375,316,0,0" VerticalAlignment="Top" Width="295" Click="button_Click"/>
+        <Canvas x:Name="Canvas" HorizontalAlignment="Left" Height="283" Margin="20,19,0,0" VerticalAlignment="Top" Width="650"/>
+        <Button x:Name="button1" Content="Построить изначальный временной ряд" HorizontalAlignment="Left" Margin="20,316,0,0" VerticalAlignment="Top" Width="314" Click="button1_Click"/>
+
+
+    </Grid>
+</Window>

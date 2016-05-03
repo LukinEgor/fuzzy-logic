@@ -21,7 +21,7 @@ namespace CMeans
 
         private readonly float _coefficient;
 
-        public CMeansCluster(int[] objects, int clusters, float coefficient = 1.6f, float epsilon = 0.1f, int iter = 10000)
+        public CMeansCluster(int[] objects, int clusters, float coefficient = 1.6f, float epsilon = 0.0001f, int iter = 10000)
         {
             _objects = objects;
             _epsilon = epsilon;
